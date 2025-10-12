@@ -14,7 +14,6 @@ services:
       - 80
     networks:
       - dokploy-network
-      - sipatca-network
 
   php-fpm:
     build:
@@ -35,8 +34,6 @@ services:
     volumes:
       - laravel-public-assets:/var/www/public/build
       - laravel-storage-production:/var/www/storage
-    networks:
-      - sipatca-network
 
   mysql:
     image: mysql:8.0
@@ -54,14 +51,10 @@ services:
       retries: 5
     volumes:
       - mysql-data-production:/var/lib/mysql
-    networks:
-      - sipatca-network
 
 networks:
   dokploy-network:
     external: true
-  sipatca-network:
-    driver: bridge
 
 volumes:
   mysql-data-production:
