@@ -70,6 +70,8 @@ services:
       - MYSQL_USER=${DB_USERNAME:-laravel}
       - MYSQL_PASSWORD=${DB_PASSWORD:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootsecret}
+    ports:
+      - "3306:3306"
     volumes:
       - mysql-data-development:/var/lib/mysql
     networks:
