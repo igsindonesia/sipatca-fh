@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
   <div class="container">
     <div class="copyright">
-        Fakultas Ilmu Komputer UPN "Veteran" Jawa Timur
+        Fakultas Hukum UPN "Veteran" Jawa Timur
     </div>
     <div class="copyright d-none">
       &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved

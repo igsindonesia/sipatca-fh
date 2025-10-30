@@ -27,13 +27,13 @@
           <h3>Tentang Kami</h3>
           <h2>Sistem Informasi Pelayanan Administrasi Terpadu Civitas Akamedik (SIPATCA)</h2>
           <p>
-            Adalah sistem informasi yang dapat digunakan oleh mahasiswa aktif Fakultas Ilmu Komputer untuk memudahkan proses pengajuan surat-surat yang dibutuhkan selama proses perkuliahan
+            Adalah sistem informasi yang dapat digunakan oleh mahasiswa aktif Fakultas Hukum untuk memudahkan proses pengajuan surat-surat yang dibutuhkan selama proses perkuliahan
           </p>
         </div>
       </div>
 
       <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-        <img src="{{ asset('website/img/fasilkom.png') }}" class="img-fluid" alt="">
+        <img src="{{ asset('website/img/fh.png') }}" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -48,7 +48,7 @@
 
     <header class="section-header">
       <h2>Jurusan</h2>
-      <p>Jurusan Yang Ada Di Fasilkom</p>
+      <p>Jurusan Yang Ada Di FH</p>
     </header>
 
     <div class="row">
@@ -320,7 +320,7 @@
 
     <header class="section-header">
       <h2>Galeri</h2>
-      <p>Galeri Foto Fasilkom</p>
+      <p>Galeri Foto FH</p>
     </header>
 
     <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -476,7 +476,7 @@
 
     <header class="section-header">
       <h2>Dekanat</h2>
-      <p>Dekanat Fakultas Ilmu Komputer</p>
+      <p>Dekanat Fakultas Hukum</p>
     </header>
 
     <div class="row gy-4">
@@ -583,7 +583,7 @@
             <div class="info-box">
               <i class="bi bi-geo-alt"></i>
               <h3>Alamat</h3>
-              <p>Gedung Fasilkom 2<br>Jl. Rungkut Madya No.1, Kec. Gunung Anyar, Surabaya, Jawa Timur 60294</p>
+              <p>Gedung FH 2<br>Jl. Rungkut Madya No.1, Kec. Gunung Anyar, Surabaya, Jawa Timur 60294</p>
             </div>
           </div>
           <div class="col">
@@ -597,7 +597,7 @@
             <div class="info-box">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:fasilkom@upnjatim.ac.id">fasilkom@upnjatim.ac.id</a></p>
+              <p><a href="mailto:fh@upnjatim.ac.id">fh@upnjatim.ac.id</a></p>
             </div>
           </div>
           <div class="col">
