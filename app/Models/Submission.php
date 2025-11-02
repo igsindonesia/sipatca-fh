@@ -29,6 +29,10 @@ class Submission extends Model
         'letter_number',
     ];
 
+    public $casts = [
+        'data' => 'array',
+    ];
+
     public const TYPES = [
         // Mahasiswa
         'pkl', // 0. Surat pengajuan pkl
