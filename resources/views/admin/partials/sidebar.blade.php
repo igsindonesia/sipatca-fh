@@ -195,26 +195,6 @@
     <ul class="dropdown-menu">
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-          <i class="far fa-file-alt"></i>
-          <span>Surat Lainnya</span>
-          @if(isset($submissionCounts['lecturer']['categories']['surat-lainnya']['total']) && $submissionCounts['lecturer']['categories']['surat-lainnya']['total'] > 0)
-            <span class="badge badge-danger">{{ $submissionCounts['lecturer']['categories']['surat-lainnya']['total'] }}</span>
-          @endif
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a class="nav-link" href="{{ route('admin.surat-lainnya-dosen.cuti.index') }}">
-              Cuti
-              @if(isset($submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti']) && $submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti'] > 0)
-                <span class="badge badge-danger">{{ $submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti'] }}</span>
-              @endif
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
           <i class="fas fa-tasks"></i>
           <span>Surat Tugas</span>
           @if(isset($submissionCounts['lecturer']['categories']['surat-tugas']['total']) && $submissionCounts['lecturer']['categories']['surat-tugas']['total'] > 0)
@@ -243,6 +223,25 @@
               Publikasi Jurnal
               @if(isset($submissionCounts['lecturer']['categories']['surat-tugas']['types']['dosen-st-publikasi']) && $submissionCounts['lecturer']['categories']['surat-tugas']['types']['dosen-st-publikasi'] > 0)
                 <span class="badge badge-danger">{{ $submissionCounts['lecturer']['categories']['surat-tugas']['types']['dosen-st-publikasi'] }}</span>
+              @endif
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+          <i class="far fa-file-alt"></i>
+          <span>Surat Lainnya</span>
+          @if(isset($submissionCounts['lecturer']['categories']['surat-lainnya']['total']) && $submissionCounts['lecturer']['categories']['surat-lainnya']['total'] > 0)
+            <span class="badge badge-danger">{{ $submissionCounts['lecturer']['categories']['surat-lainnya']['total'] }}</span>
+          @endif
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="nav-link" href="{{ route('admin.surat-lainnya-dosen.cuti.index') }}">
+              Cuti
+              @if(isset($submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti']) && $submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti'] > 0)
+                <span class="badge badge-danger">{{ $submissionCounts['lecturer']['categories']['surat-lainnya']['types']['dosen-cuti'] }}</span>
               @endif
             </a>
           </li>

@@ -33,7 +33,7 @@
                 <tr>
                   <td>{{ $key+1 }}</td>
                   <td>{{ $submission->user->name }}</td>
-                  <td>{{ json_decode($submission->data)->judul_ciptaan ?? '-' }}</td>
+                  <td>{{ $submission->data->judul_ciptaan ?? '-' }}</td>
                   <td>{{ $submission->formattedCreatedAt }}</td>
                   <td><div class="badge badge-{{ $submission->StatusBadge }}">{{ $submission->status }}</div></td>
                   <td>

@@ -1,5 +1,5 @@
 @php
-  $data = json_decode($submission->data);
+  $data = $submission->data;
 @endphp
 @extends('admin.layout')
 

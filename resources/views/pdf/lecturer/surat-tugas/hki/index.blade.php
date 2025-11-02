@@ -1,134 +1,337 @@
 @php
-    $data = json_decode($submission->data, true)
+$data = json_decode($submission->data, true)
 @endphp
 
 <!DOCTYPE html>
 <html lang="en" style="width: 21cm; height: 29cm; margin: 0px;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Tugas HKI (Hak Cipta)</title>
+    <title>Surat Tugas HKI</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            font-size: 12px;
+        td {
+            vertical-align: top;
+            padding: 0px 3px;
         }
-        .header {
+
+        .p-0 {
+            padding: 0px;
+        }
+
+        .table-bordered,
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            padding: 5px;
+        }
+
+        .d-block {
+            display: block;
+        }
+
+        .capitalize {
+            text-transform: capitalize;
+        }
+
+        .text-center {
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #000;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .text-indent {
+            text-indent: 30px;
+        }
+
+        .text-info {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .lh-1-5 {
+            line-height: 1.5;
+        }
+
+        .vertical-align-middle {
+            vertical-align: middle;
+        }
+
+        .vertical-align-top {
+            vertical-align: top;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .bolder {
+            font-weight: 900;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .logo {
+            height: auto;
+            width: 100px;
+        }
+
+        .pb-10 {
             padding-bottom: 10px;
         }
-        .header h2 {
-            margin: 5px 0;
-            font-size: 14px;
+
+        .py-10 {
+            padding-bottom: 10px;
+            padding-top: 10px;
         }
-        .header p {
-            margin: 2px 0;
-            font-size: 11px;
+
+        .px-10 {
+            padding-left: 10px;
+            padding-right: 10px;
         }
-        .content {
-            margin: 20px 0;
-            line-height: 1.6;
+
+        .px-50 {
+            padding-left: 50px;
+            padding-right: 50px;
         }
-        .field-row {
-            margin: 10px 0;
-            display: flex;
+
+        .py-50 {
+            padding-top: 50px;
+            padding-bottom: 50px;
         }
-        .field-label {
-            width: 150px;
-            font-weight: bold;
+
+        .mt-16 {
+            margin-top: 16px;
         }
-        .field-value {
-            flex: 1;
-            border-bottom: 1px solid #000;
-            padding: 2px 5px;
+
+        .mt-20 {
+            margin-top: 20px;
         }
-        table {
+
+        .mt-50 {
+            margin-top: 50px;
+        }
+
+        .ml-30 {
+            margin-left: 30px;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        td:empty::after {
+            content: "\00a0";
+        }
+
+        .ttd {
+            width: auto;
+            height: 2cm;
+        }
+
+        .watermark {
+            background-image: url('{{ asset("website/img/logo-upn.png") }}');
+            background-repeat: no-repeat;
+            background-size: 99%;
+            background-position: top center;
+            position: absolute;
+            opacity: 0.2;
             width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
+            height: 100%;
+            z-index: -1;
         }
-        th, td {
-            border: 1px solid #000;
-            padding: 8px;
-            text-align: left;
+
+        .fit {
+            width: 1%;
+            white-space: nowrap;
         }
-        th {
-            background-color: #f0f0f0;
-            font-weight: bold;
-        }
-        .signature-section {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .signature-box {
-            width: 150px;
-            text-align: center;
-        }
-        .signature-line {
-            border-top: 1px solid #000;
-            margin-top: 30px;
-            padding-top: 5px;
+
+        .page-break {
+            page-break-after: always;
         }
     </style>
 </head>
-<body>
-    <div class="header">
-        <h2>SURAT TUGAS HKI (HAK CIPTA)</h2>
-        <p>Universitas Perikanan dan Perikanan</p>
-    </div>
 
-    <div class="content">
-        <div class="field-row">
-            <span class="field-label">Semester</span>
-            <span class="field-value">{{ $data['semester'] }}</span>
-        </div>
+<body style="width: 21cm; height: 29cm; margin: 0px; position: relative;">
+    <div class="watermark"></div>
+    <div class="px-50 py-50">
+        @include('pdf.partials.kop')
 
-        <div class="field-row">
-            <span class="field-label">Nomor Permohonan</span>
-            <span class="field-value">{{ $data['nomor_permohonan'] }}</span>
-        </div>
+        <table class="w-100 mt-16 text-center">
+            <tr>
+                <td class="bold underline">SURAT TUGAS</td>
+            </tr>
+            <tr>
+                <td class="bold">Nomor: {{ $submission->formattedLetterNumber }}</td>
+            </tr>
+        </table>
 
-        <div class="field-row">
-            <span class="field-label">Tanggal Permohonan</span>
-            <span class="field-value">{{ \Carbon\Carbon::parse($data['tanggal_permohonan'])->locale('id_ID')->translatedFormat('d F Y') }}</span>
-        </div>
+        <table class="w-100 mt-16">
+            <tr>
+                <td>Menimbang</td>
+                <td>:</td>
+                <td>Dalam rangka kelancaran pelaksanaan kegiatan akademik Fakultas Ilmu
+                    Komputer Universitas Pembangunan Nasional "Veteran" Jawa Timur yang
+                    akan melaksanakan HKI (Hak Cipta) {{ $data['jenis_ciptaan'] }}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Dasar</td>
+                <td>:</td>
+                <td>
+                    Program kegiatan akademik Fakultas Ilmu Komputer Universitas Pembangunan
+                    Nasional "Veteran" Jawa Timur khususnya di bidang akademik, pendidikan,
+                    dan pengajaran semester {{ $data['semester'] }}.
+                </td>
+            </tr>
+        </table>
 
-        <div class="field-row">
-            <span class="field-label">Jenis Ciptaan</span>
-            <span class="field-value">{{ $data['jenis_ciptaan'] }}</span>
-        </div>
+        <table class="w-100 mt-16 text-center">
+            <tr>
+                <td class="bold underline">MENUGASKAN</td>
+            </tr>
+        </table>
 
-        <div class="field-row">
-            <span class="field-label">Judul Ciptaan</span>
-            <span class="field-value">{{ $data['judul_ciptaan'] }}</span>
-        </div>
+        <table class="w-100 mt-16">
+            <tr>
+                <td colspan="3" class="text-indent">
+                    Pegawai yang namanya terlampir, untuk melaksanakan tugas dan tanggung jawabnya dalam HKI
+                    (Hak Cipta) {{ $data['jenis_ciptaan'] }}
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="fit">Nomor Permohonan</td>
+                <td class="fit">:</td>
+                <td>{{ $data['nomor_permohonan'] }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Tanggal Permohonan</td>
+                <td class="fit">:</td>
+                <td>{{ Carbon\Carbon::parse($data['tanggal_permohonan'])->locale('id_ID')->translatedFormat('d F Y') }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Jenis Ciptaan</td>
+                <td class="fit">:</td>
+                <td>{{ $data['jenis_ciptaan'] }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Judul Ciptaan</td>
+                <td class="fit">:</td>
+                <td>{{ $data['judul_ciptaan'] }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Nomor Pencatatan</td>
+                <td class="fit">:</td>
+                <td>{{ $data['nomor_pencatatan'] }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Link Sertifikat</td>
+                <td class="fit">:</td>
+                <td>{{ $data['link_sertifikat'] }}</td>
+            </tr>
+            <tr>
+                <td class="fit">Link SS Sinta</td>
+                <td class="fit">:</td>
+                <td>{{ $data['link_sinta'] }}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-indent">
+                    Setelah pelaksanaan tugas, maka segera menyampaikan laporan kepada Dekan Fakultas Hukum,
+                    Universitas Pembangunan Nasional ”Veteran” Jawa Timur. Surat Tugas ini dibuat untuk
+                    dilaksanakan dengan penuh tanggung jawab.
+                </td>
+            </tr>
+        </table>
 
-        <div class="field-row">
-            <span class="field-label">Nomor Pencatatan</span>
-            <span class="field-value">{{ $data['nomor_pencatatan'] }}</span>
-        </div>
+        <section class="mt-50">
+            <table class="w-100">
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold">Surabaya, {{ $submission->approved_at?->translatedFormat('d F Y') }}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold capitalize">{{ $submission->approvedByEmployee->position->name }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold">Fakultas Hukum</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td style="position: relative;">
+                        <img src="{{ asset('website/img/stempel.png') }}" alt="stempel" style="position: absolute; top: 0; left: 0; transform: translate(-25%, -25%); width: 200px; height: auto; z-index: 1;">
+                        <img class="ttd" src="{{ $submission->approvedByEmployee->signatureImage }}" alt="ttd" style="position: relative; z-index: 0;">
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold underline">{{ $submission->approvedByEmployee->name }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="">{{ $submission->approvedByEmployee->registration_type }}. {{ $submission->approvedByEmployee->registration_number }}</td>
+                </tr>
+            </table>
+        </section>
 
-        <h3 style="margin-top: 15px; margin-bottom: 10px;">Daftar Dosen Penciptaan</h3>
-        <table>
+        <div class="page-break"></div>
+        <div class="mt-50"></div>
+
+        @include('pdf.partials.kop')
+
+        <table class="w-100 text-center bold mt-16">
+            <tr>
+                <td>Daftar Nama</td>
+            </tr>
+            <tr>
+                <td>HKI (Hak Cipta) {{ $data['jenis_ciptaan'] }}</td>
+            </tr>
+        </table>
+
+        <table class="w-100 mt-16 table-bordered">
             <thead>
                 <tr>
-                    <th style="width: 10%;">No.</th>
-                    <th style="width: 35%;">Nama</th>
-                    <th style="width: 25%;">Keterangan</th>
-                    <th style="width: 30%;">Alamat</th>
+                    <th class="fit">No</th>
+                    <th>Nama Dosen</th>
+                    <th>Keterangan</th>
+                    <th>Alamat</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($data['daftar_dosen'] as $index => $dosen)
+                @foreach($data['daftar_dosen'] as $key => $dosen)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td class="fit text-center">{{ $key + 1 }}</td>
                     <td>{{ $dosen['nama'] }}</td>
                     <td>{{ $dosen['keterangan'] }}</td>
                     <td>{{ $dosen['alamat'] }}</td>
@@ -137,46 +340,41 @@
             </tbody>
         </table>
 
-        <h3 style="margin-top: 15px; margin-bottom: 10px;">Status Persetujuan</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 30%;">Status</th>
-                    <th style="width: 70%;">Keterangan</th>
+        <section class="mt-50">
+            <table class="w-100">
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold">Surabaya, {{ $submission->approved_at?->translatedFormat('d F Y') }}</td>
                 </tr>
-            </thead>
-            <tbody>
                 <tr>
-                    <td><strong>{{ $submission->status }}</strong></td>
-                    <td>
-                        @if($submission->verified_at)
-                            Diverifikasi: {{ \Carbon\Carbon::parse($submission->verified_at)->locale('id_ID')->translatedFormat('d F Y H:i') }}
-                        @endif
-                        @if($submission->approved_at)
-                            <br>Disetujui: {{ \Carbon\Carbon::parse($submission->approved_at)->locale('id_ID')->translatedFormat('d F Y H:i') }}
-                        @endif
-                        @if($submission->rejected_at)
-                            <br>Ditolak: {{ \Carbon\Carbon::parse($submission->rejected_at)->locale('id_ID')->translatedFormat('d F Y H:i') }}
-                        @endif
+                    <td>&nbsp;</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold capitalize">{{ $submission->approvedByEmployee->position->name }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold">Fakultas Hukum</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td style="position: relative;">
+                        <img src="{{ asset('website/img/stempel.png') }}" alt="stempel" style="position: absolute; top: 0; left: 0; transform: translate(-25%, -25%); width: 200px; height: auto; z-index: 1;">
+                        <img class="ttd" src="{{ $submission->approvedByEmployee->signatureImage }}" alt="ttd" style="position: relative; z-index: 0;">
                     </td>
                 </tr>
-            </tbody>
-        </table>
-
-        @if($submission->approved_at)
-            <div style="margin-top: 30px;">
-                <p><strong>Nomor Surat:</strong> {{ $submission->formattedLetterNumber }}</p>
-            </div>
-        @endif
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="bold underline">{{ $submission->approvedByEmployee->name }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="w-50"></td>
+                    <td class="">{{ $submission->approvedByEmployee->registration_type }}. {{ $submission->approvedByEmployee->registration_number }}</td>
+                </tr>
+            </table>
+        </section>
     </div>
-
-    @if($dekan && $submission->approved_at)
-        <div class="signature-section">
-            <div class="signature-box">
-                <div class="signature-line">{{ $dekan->name }}</div>
-                <p style="margin-top: 5px; font-size: 10px;">Dekan</p>
-            </div>
-        </div>
-    @endif
 </body>
+
 </html>

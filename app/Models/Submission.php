@@ -31,6 +31,7 @@ class Submission extends Model
 
     public $casts = [
         'data' => 'array',
+        'approved_at' => 'datetime',
     ];
 
     public const TYPES = [
