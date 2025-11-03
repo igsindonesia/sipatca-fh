@@ -15,6 +15,8 @@ fi
 # Remove storage-init directory
 rm -rf /var/www/storage-init
 
+php artisan storage:link
+
 # Run Laravel migrations
 # -----------------------------------------------------------
 # Ensure the database schema is up to date.

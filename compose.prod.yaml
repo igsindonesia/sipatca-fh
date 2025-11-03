@@ -8,8 +8,8 @@ services:
       php-fpm:
         condition: service_healthy
     volumes:
-      - laravel-storage-production:/var/www/storage:ro
-      - laravel-public-assets:/var/www/public/build:ro
+      - ../files/storage:/var/www/storage:ro
+      - ../files/public:/var/www/public:ro
     expose:
       - 80
     networks:
@@ -32,8 +32,8 @@ services:
       mysql:
         condition: service_healthy
     volumes:
-      - laravel-public-assets:/var/www/public/build
-      - laravel-storage-production:/var/www/storage
+      - ../files/storage:/var/www/storage
+      - ../files/public:/var/www/public
 
   mysql:
     image: mysql:8.0
@@ -50,13 +50,8 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - mysql-data-production:/var/lib/mysql
+      - ../files/mysql:/var/lib/mysql
 
 networks:
   dokploy-network:
     external: true
-
-volumes:
-  mysql-data-production:
-  laravel-storage-production:
-  laravel-public-assets:
