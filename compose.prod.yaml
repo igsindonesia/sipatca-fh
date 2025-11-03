@@ -14,6 +14,7 @@ services:
       - 80
     networks:
       - dokploy-network
+      - laravel-production
 
   php-fpm:
     build:
@@ -34,6 +35,8 @@ services:
     volumes:
       - ../files/storage:/var/www/storage
       - ../files/public:/var/www/public
+    networks:
+      - laravel-production
 
   mysql:
     image: mysql:8.0
@@ -51,7 +54,10 @@ services:
       retries: 5
     volumes:
       - ../files/mysql:/var/lib/mysql
+    networks:
+      - laravel-production
 
 networks:
   dokploy-network:
     external: true
+  laravel-production:
