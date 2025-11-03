@@ -1,6 +1,15 @@
 #!/bin/sh
 set -e
 
+# Initialize public directory if empty
+# -----------------------------------------------------------
+# Copy built assets to the shared volume on first run
+# -----------------------------------------------------------
+if [ ! -f /var/www/public/index.php ]; then
+  echo "Initializing public directory with built assets..."
+  cp -R /var/www/public-init/. /var/www/public/
+fi
+
 # Initialize storage directory if empty
 # -----------------------------------------------------------
 # If the storage directory is empty, copy the initial contents
@@ -12,8 +21,8 @@ if [ ! "$(ls -A /var/www/storage)" ]; then
   chown -R www-data:www-data /var/www/storage
 fi
 
-# Remove storage-init directory
-rm -rf /var/www/storage-init
+# Remove init directories
+rm -rf /var/www/storage-init /var/www/public-init
 
 php artisan storage:link
 

@@ -15,7 +15,6 @@ services:
     networks:
       - dokploy-network
       - laravel-production
-
   php-fpm:
     build:
       context: .
@@ -36,6 +35,7 @@ services:
       - ../files/storage:/var/www/storage
       - ../files/public:/var/www/public
     networks:
+      - laravel-production
       - laravel-production
 
   mysql:
